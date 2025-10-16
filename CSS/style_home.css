@@ -1,0 +1,170 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #e6fff5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  
+}
+
+/* Seção CABEÇALHO */
+
+header {
+  width: 100%;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+  height: 60px;
+  z-index: 1000;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  top: 0px;
+  left: 0;
+}
+
+.logo{
+  height: 150px;  /* ajuste o tamanho da logo */
+  width: auto;
+  display: flex;
+}
+
+
+/* Seção ENTRAR */
+
+.illustration{
+    width: 600px;
+    max-width: 100%;
+}
+
+.topo_home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    /* espaço entre imagem e texto */
+  flex-wrap: nowrap; /* responsivo: empilha no celular */
+  height: 600px;
+  padding-bottom: 20px;
+
+}
+
+.containerhome {
+  background: #e6fff5;
+  text-align: center;
+  max-width: 500px;
+  align-items: center;
+  padding-right: 100px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    
+  }
+
+.subtext{
+  font-size: 20px;
+}
+
+.btn {
+    padding: 1px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 200px;
+    margin: 0 auto;
+    font-weight: bold;
+    background-color: #a0f0e0;
+    color: #000;
+
+  }
+
+
+
+/* Seção POR QUE USAR */
+
+.porque-usar {
+  background: #0d2b45;   /* Azul escuro do print */
+  color: #fff;
+  padding: 60px 20px;
+  width: 100%;
+}
+
+.porque-container h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #fff;
+  
+}
+
+.porque-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.porque-container p {
+  margin-bottom: 40px;
+  font-size: 16px;
+  color: #cfd9e6;
+}
+
+.beneficios {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.beneficio_img{
+    width: 250px;
+}
+
+/* Seção AVALIAÇÔES */
+
+.avaliacoes {
+  background: #1078e0;   /* fundo clarinho */
+  padding: 60px 20px;
+  text-align: center;
+  width: 100%;
+  
+}
+
+.avaliacoes-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.avaliacoes h2 {
+  font-size: 28px;
+  margin-bottom: 40px;
+  color: #0d2b45;
+}
+
+.avaliacao {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.avaliacoes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  
+}
+
+.avaliacao span {
+  display: block;
+  font-size: 14px;
+  color: #0073e6;
+  font-weight: bold;
+}
+

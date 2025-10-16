@@ -1,0 +1,233 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #e6fff5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  padding-top: 60px;
+  box-sizing: border-box;
+  color: #111;
+  min-height: 100vh;
+}
+
+header {
+  width: 100%;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+  height: 60px;
+  z-index: 1000;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  top: 0px;
+  left: 0;
+}
+
+.logo{
+  height: 150px;  /* ajuste o tamanho da logo */
+  width: auto;
+  display: flex;
+}
+
+h4{
+    text-align: left;
+}
+
+ul{
+    text-align: left;
+    padding-bottom: 10px;
+}
+
+/* ===== Layout central ===== */
+.login-main { 
+    width: 100%; 
+    display:flex; 
+    justify-content:center; 
+    padding-top: 48px; 
+}
+
+.login-container { 
+    width: 420px; 
+    max-width: 92%; 
+    text-align: center; 
+}
+
+/* Title */
+.login-title { 
+    font-size: 20px; 
+    font-weight: 700; 
+    margin-bottom: 10px;
+}
+
+.login-subtitle { 
+    color: #474747; 
+    font-size: 14px; 
+    margin-bottom: 26px; 
+}
+
+
+
+/* ===== Input group (underline + floating label) ===== */
+.login-input-group {
+  position: relative;
+  width: 100%;
+  margin: 8px auto 18px;
+  text-align: left;
+  padding-top: 8px;
+}
+
+/* Base thin line (cinza) */
+.login-input-group::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  height: 1px;
+  background: #D6D6D6;      /* linha base cinza */
+  transition: background .18s ease, opacity .18s ease;
+  opacity: 1;
+}
+
+/* Animated black line (grows with scaleX) */
+.login-input-group::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 9px;
+  height: 2px;
+  width: 100%;
+  background: #111;         /* linha animada preta */
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform .22s cubic-bezier(.2,.8,.2,1), background .18s ease;
+  pointer-events: none;
+}
+
+/* O input */
+.login-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 18px 40px 18px 0;   /* espaço à direita para o olho */
+  font-size: 16px;
+  color: #111;
+}
+
+
+
+/* Placeholder da senha (mais claro) */
+.login-input::placeholder { 
+    color: #C7C7C7; 
+    font-size: 14px; 
+}
+
+/* Label (sobreposta ao input) */
+.login-label {
+  position: absolute;
+  left: 0;
+  top: 12px;
+  font-size: 15px;
+  color: #666;
+  pointer-events: none;
+  transition: transform .18s ease, top .18s ease, font-size .18s ease, color .18s ease;
+  transform-origin: left top;
+}
+
+/* Estado FOCUSED ou FILLED -> label sobe e encolhe; linha preta cresce */
+.login-input-group.login-focused::after,
+.login-input-group.login-filled::after {
+  transform: scaleX(1);
+}
+
+/* Linha preta mais visível quando focado */
+.login-input-group.login-focused::after { background: #111; }
+
+/* Quando preenchido OU em foco deixa label acima */
+.login-input-group.login-focused .login-label,
+.login-input-group.login-filled .login-label {
+  top: -10px;
+  font-size: 12px;
+  color: #111;
+}
+
+/* Se quiser que, por padrão, CPF tenha a linha preta já visível (igual em algumas telas),
+   adicione a classe .login-filled ao group-cpf no HTML/JS. O JS da página já faz isso. */
+
+/* ===== Olho da senha ===== */
+.login-eye {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-eye svg { display: block; }
+
+/* ===== "Esqueceu a senha" ===== */
+.login-forgot {
+  display: block;
+  text-align: right;
+  font-size: 12px;
+  color: #0077B8;
+  text-decoration: none;
+  margin: 6px 0 18px;
+}
+.login-forgot:hover { text-decoration: underline; }
+
+/* ===== Botões ===== */
+.login-btn { 
+    width: 100%; 
+    padding: 12px; 
+    font-size: 15px; 
+    cursor: pointer; 
+    margin-bottom: 12px; 
+    border-radius: 3px; 
+}
+
+.login-btn-black {
+  background: linear-gradient(#0d0d0d, #0a0a0a);
+  color: #fff;
+  border: none;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.02) inset;
+}
+
+.login-btn-white {
+  background: #fff;
+  color: #111;
+  border: 1px solid #111;
+}
+
+/* ===== Footer ===== */
+.login-footer { font-size: 11px; color: #666; margin-top: 14px; }
+.login-footer a { color: #0077B8; text-decoration: none; }
+
+/* ===== Responsividade simples ===== */
+@media (max-width: 460px) {
+  .login-container { 
+    width: 92%; 
+    padding: 0 12px; 
+}
+
+  .login-input { 
+    padding-right: 36px; 
+}
+}
+.input-hint {
+  display: block;
+  font-size: 12px;
+  color: #555;
+  margin-top: 2px;
+}
+

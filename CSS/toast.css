@@ -1,0 +1,27 @@
+.toast {
+  visibility: hidden;
+  min-width: 280px;
+  max-width: 350px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  padding: 14px 20px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  font-size: 0.95rem;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast.success { background-color: #28a745; } /* verde */
+.toast.error { background-color: #dc3545; }   /* vermelho */
