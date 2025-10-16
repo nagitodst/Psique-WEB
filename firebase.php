@@ -7,15 +7,18 @@ $credPath = __DIR__ . '/credentials/psique-7fdb1-firebase-adminsdk-fbsvc-2e760b4
 
 try {
     $factory = (new Factory)
-        ->withServiceAccount($credPath)
-        ->withDatabaseUri('https://psique-7fdb1-default-rtdb.firebaseio.com/');
+         ->withServiceAccount($credPath)
+         ->withDatabaseUri('https://psique-7fdb1-default-rtdb.firebaseio.com/');
 
-    $database = $factory->createDatabase();
+     $database = $factory->createDatabase();
+    // ⚠️ Adicione esta linha para criar a instância do Auth
+    $auth = $factory->createAuth(); 
 } catch (\Exception $e) {
     die("Erro ao conectar ao Firebase: " . $e->getMessage());
 }
 
 // --- Funções de verificação ---
+
 function email_existe($email, $database)
 {
     $ref = $database->getReference('usuarios');
@@ -63,10 +66,26 @@ function crp_existe($crp, $database)
 
 
 
-// --- Função para cadastrar ---
-function cadastrar_usuario($dados, $database)
-{
-    $ref = $database->getReference('usuarios');
-    $newPostRef = $ref->push($dados);
-    return $newPostRef->getKey();
+function cadastrar_usuario($dados, $auth, $database) {
+     try {
+         $user = $auth->createUser([ 
+            'email' => $dados['email'],
+            'password' => $dados['senha'] 
+         ]);
+        $uid = $user->uid;
+     } catch (\Throwable $e) {
+         return false;
+     }
+    try {
+         $database->getReference('pacientes/' . $uid)
+                ->set([
+                    'nome' => $dados['nome'],
+                     'data_nascimento' => $dados['data_nascimento'],
+                     'email' => $dados['email'],
+
+            ]);
+        return true;
+     } catch (\Throwable $e) {
+         return false;
+     }
 }

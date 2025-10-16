@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Salva temporariamente em sessão
     $_SESSION['cadastro_email'] = $email;
-    $_SESSION['cadastro_senha'] = password_hash($senha, PASSWORD_DEFAULT);
+    $_SESSION['cadastro_senha'] = $senha;
 
     // Vai para a parte 2
     header("Location: cadastroPaciente2.php");

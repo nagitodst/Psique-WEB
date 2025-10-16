@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <h1 class="login-title">Para concluir seu cadastro, precisamos de mais alguns dados</h1>
       <h3 class="login-subtitle">Parte 2 de 2</h3>
 
-  <form action="cadastroProfissional2.php" method="POST" class="login-form">
+  <form id="form-cadastro" action="cadastroProfissional2.php" method="POST" class="login-form">
     <div class="login-input-group" id="group-nome">
       <input id="nome" name="nome" class="login-input" type="text" autocomplete="off" required/>
       <label for="nome" class="login-label">Digite seu nome completo</label>
@@ -113,6 +113,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </main>
 
   <script src="JS/script_login.js"></script>
+  <script type="module" src="JS/firebase_cadastro.js"></script>
+
 
 </body>
 </html>

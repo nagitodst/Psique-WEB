@@ -24,7 +24,7 @@ document.getElementById("recuperar-form").addEventListener("submit", (e) => {
 
   sendPasswordResetEmail(auth, email)
     .then(() => {
-      mensagem.textContent = "✅ Um link de redefinição foi enviado para seu e-mail.";
+      mensagem.textContent = "✅ Um link de redefinição foi enviado para seu e-mail. Caso não o encontre na caixa principal, verifique seu Spam.";
       mensagem.style.color = "green";
     })
     .catch((error) => {

@@ -13,13 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $telefone = $_POST['telefone'] ?? '';
 
     $email = $_SESSION['cadastro_email'];
-    $senha_hash = $_SESSION['cadastro_senha'];
+    $senha = $_SESSION['cadastro_senha'];
 
     if (empty($nome) || empty($data_nascimento) || empty($telefone)) {
         header("Location: loginPaciente.html?erro=campos");
         exit;
     }
-    elseif (!preg_match("/^\(\d{2}\)\s\d{5}-\d{4}$/", $telefone)) {
+    elseif (!preg_match("/^\d{2}\s\d{9}$/", $telefone)) {
         header("Location: loginPaciente.html?erro=telefone");
         exit;
     }
@@ -34,10 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'data_nascimento' => $data_nascimento,
         'telefone' => $telefone,
         'email' => $email,
-        'senha' => $senha_hash
+        'senha' => $senha
     ];
 
-    $resultado = cadastrar_usuario($dados, $database);
+    $resultado = cadastrar_usuario($dados, $auth,$database);
 
     if ($resultado) {
         session_unset();
@@ -46,8 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 exit;
 
     } else {
-        header("Location: loginPaciente.php?erro=firebase");
-        exit;
+        die("Falha no Cadastro (Verifique os Logs do Firebase.php)");
+        // header("Location: loginPaciente.php?erro=firebase");
+        // exit;
     }
 }
-?>
+
