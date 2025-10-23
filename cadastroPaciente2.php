@@ -55,11 +55,7 @@ if (!isset($_SESSION['cadastro_email']) || !isset($_SESSION['cadastro_senha'])) 
         <button type="submit" class="login-btn login-btn-black">Finalizar meu cadastro</button>
       </form>
       
-      <p class="login-footer">Protegido por reCAPTCHA – <a href="#">Privacidade</a> – <a href="#">Condições</a></p>
     </div>
   </main>
-
-
-
 </body>
 </html>

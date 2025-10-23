@@ -119,10 +119,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit" class="login-btn login-btn-black">Continuar</button>
       </form>
 
-      <p class="login-footer">Protegido por reCAPTCHA – <a href="#">Privacidade</a> – <a href="#">Condições</a></p>
-    </div>
-  </main>
-
   <script src="JS/script_login.js"></script>
   <script src="JS/script_senha.js"></script>
 </body>

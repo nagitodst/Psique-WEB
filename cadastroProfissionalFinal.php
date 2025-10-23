@@ -7,24 +7,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'] ?? '';
     $data_nascimento = $_POST['data_nascimento'] ?? '';
     $telefone = $_POST['telefone'] ?? '';
+    $crp = $_POST['crp'] ?? '';
 
     // Dados armazenados na sessão (email e senha da primeira etapa)
     $email = $_SESSION['email'] ?? '';
     $senha = $_SESSION['senha'] ?? '';
 
     // Validação básica
-    if (empty($nome) || empty($data_nascimento) || empty($telefone) || empty($email) || empty($senha)) {
-        header("Location: cadastroPaciente2.php?erro=campos");
+    if (empty($nome) || empty($data_nascimento) || empty($telefone) || empty($crp) || empty($email) || empty($senha)) {
+        header("Location: cadastroProfissional2.php?erro=campos");
         exit;
     }
 
-    // Verifica duplicidades
+    // Verificações de duplicidade
     if (email_existe($email, $database)) {
-        header("Location: cadastroPaciente2.php?erro=email_existente");
+        header("Location: cadastroProfissional2.php?erro=email_existente");
         exit;
     }
     if (telefone_existe($telefone, $database)) {
-        header("Location: cadastroPaciente2.php?erro=telefone_existente");
+        header("Location: cadastroProfissional2.php?erro=telefone_existente");
+        exit;
+    }
+    if (crp_existe($crp, $database)) {
+        header("Location: cadastroProfissional2.php?erro=crp_existente");
         exit;
     }
 
@@ -33,21 +38,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'nome' => $nome,
         'data_nascimento' => $data_nascimento,
         'telefone' => $telefone,
+        'crp' => $crp,
         'email' => $email,
         'senha' => $senha
     ];
 
     // Tenta cadastrar no Firebase
-    if (cadastrar_usuario($dados, $auth, $database)) {
-        // Limpa sessão e redireciona com sucesso
+    if (cadastrar_profissional($dados, $auth, $database)) {
         session_unset();
-        header("Location: loginPaciente.php?sucesso=1");
+        header("Location: loginProfissional.php?sucesso=1");
         exit;
     } else {
-        header("Location: cadastroPaciente2.php?erro=firebase");
+        header("Location: cadastroProfissional2.php?erro=firebase");
         exit;
     }
 } else {
-    header("Location: cadastroPaciente1.php");
+    header("Location: cadastroProfissional1.php");
     exit;
 }

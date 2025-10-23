@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Psique - Login - Profissional </title>
+  <title>Login</title>
   <link rel="stylesheet" href="CSS/log_cad_rec.css" />
   <link rel="stylesheet" href="CSS/toast.css">
 
@@ -18,17 +18,17 @@
     <div class="login-container">
       <h2 class="login-title">Acesse com seu login ou cadastre-se!</h2> <br>
 
-      <form action="loginProfissional.php"  method="post" class="login-form">
+      <form action="inicialPaciente.html" class="login-form">
         <!-- CPF -->
-        <div class="login-input-group" id="group-crp">
-          <input id="crp" class="login-input" type="text" inputmode="numeric" autocomplete="off" required/>
-          <label for="crp" class="login-label">Digite o seu CRP</label>
+        <div class="login-input-group" id="group-email">
+          <input id="email" class="login-input" type="text" autocomplete="off" required/>
+          <label for="email" class="login-label">Digite seu E-mail</label>
         </div>
 
         <!-- Senha -->
         <div class="login-input-group" id="group-senha">
             <input id="senha" class="login-input" type="password" autocomplete="current-password" required/>
-            <label for="senha" class="login-label">Digite a sua senha</label>
+            <label for="senha" class="login-label">Digite sua senha</label>
             <button type="button" class="login-eye" aria-label="Mostrar senha" title="Mostrar senha">
             <!-- SVG olho (duas versões controladas por JS) -->
             <svg class="login-eye-open" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -46,18 +46,21 @@
         <a href="recuperarSenha.html" class="login-forgot">Esqueceu a senha?</a>
 
         <button type="submit" class="login-btn login-btn-black">Entrar</button>
+        </form>
         <button type="button" class="login-btn login-btn-white" onclick="location.href='cadastroProfissional1.php'">Quero criar a minha conta</button>
-      </form>
+      
 
       <p class="login-footer">Protegido por reCAPTCHA – <a href="#">Privacidade</a> – <a href="#">Condições</a></p>
     </div>
   </main>
 
-  <div id="toast" class="toast"></div>
+  <script src="JS/script_login.js"></script>
 
-  <script src="JS/script_login.js"></script>
+  <div id="toast" class="toast"></div>
+  
   <script src="JS/toast.js"></script>
-  <script src="JS/script_login.js"></script>
+
+
 
 </body>
 </html>

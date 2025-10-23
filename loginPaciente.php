@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Login do Paciente</title>
+  <title>Login</title>
   <link rel="stylesheet" href="CSS/log_cad_rec.css" />
   <link rel="stylesheet" href="CSS/toast.css">
 
@@ -18,7 +18,7 @@
     <div class="login-container">
       <h2 class="login-title">Acesse com seu login ou cadastre-se!</h2> <br>
 
-      <form action="usuarioPaciente.html" class="login-form">
+      <form action="inicialPaciente.html" class="login-form">
         <!-- CPF -->
         <div class="login-input-group" id="group-email">
           <input id="email" class="login-input" type="text" autocomplete="off" required/>
