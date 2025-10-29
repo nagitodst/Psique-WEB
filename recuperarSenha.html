@@ -11,9 +11,11 @@
   <div class="login-container">
     <h2>Recuperar Senha</h2>
 
-    <form id="recuperar-form">
-      <label for="email">Digite seu e-mail:</label>
-      <input type="email" id="email" placeholder="exemplo@email.com" required />
+    <form id="recuperar-form" class="login-form">
+      <div class="login-input-group">
+          <input id="email" name="email" class="login-input" type="email" required />
+          <label for="email" class="login-label">Digite seu E-mail</label>
+        </div>
 
       <button type="submit">Enviar link de redefinição</button>
     </form>

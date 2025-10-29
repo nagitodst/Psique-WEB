@@ -19,12 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // 3. Validar e-mail
-    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         die("Digite um e-mail válido!");
     }
 
     // 4. Verificar se e-mail já existe no Firebase
-    elseif (email_existe($email, $database)) {
+    if (email_existe($email, $database)) {
         die("Este e-mail já está cadastrado!");
     }
 

@@ -2,6 +2,11 @@
 session_start();
 require_once 'firebase.php'; // Importa conexão e funções
 
+if (!isset($_SESSION['cadastro_email']) || !isset($_SESSION['cadastro_senha'])) {
+    header("Location: loginPaciente.php?erro=expirou");
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Dados vindos do formulário da etapa 2
     $nome = $_POST['nome'] ?? '';
@@ -19,11 +24,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Verifica duplicidades
-    if (email_existe($email, $database)) {
+    elseif (email_existe($email, $database)) {
         header("Location: cadastroPaciente2.php?erro=email_existente");
         exit;
     }
-    if (telefone_existe($telefone, $database)) {
+
+    elseif (telefone_existe($telefone, $database)) {
         header("Location: cadastroPaciente2.php?erro=telefone_existente");
         exit;
     }
