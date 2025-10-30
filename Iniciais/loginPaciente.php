@@ -5,6 +5,12 @@ require_once __DIR__ . '/../firebase.php';
 $mensagem_erro = '';
 $mensagem_sucesso = '';
 
+function usuario_eh_paciente($uid, $database) {
+    $referencia = $database->getReference('pacientes/' . $uid);
+    return $referencia->getSnapshot()->exists();
+}
+
+//LÓGICA DE LOGIN
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? '';
     $senha = $_POST['senha'] ?? '';
@@ -14,25 +20,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // autenticar no Firebase
+    // Tenta autenticar no Firebase Auth
     $resultado = autenticar_usuario($email, $senha, $auth);
 
     if (is_array($resultado)) {
-        // Login bem-sucedido: Armazena dados essenciais na sessão
-        $_SESSION['user_uid'] = $resultado['uid'];
-        $_SESSION['user_email'] = $email;
-        $_SESSION['user_type'] = 'paciente'; // Indica o tipo de usuário
+        $uid = $resultado['uid'];
 
-        // Redireciona para a página inicial
-        header("Location: ../Main/mainPaciente.html");
-        exit;
+        // VERIFICAÇÃO DE TIPO DE USUÁRIO
+        if (usuario_eh_paciente($uid, $database)) {
+            // Login bem-sucedido: Armazena dados essenciais na sessão
+            $_SESSION['user_uid'] = $uid;
+            $_SESSION['user_email'] = $email;
+            $_SESSION['user_type'] = 'paciente'; // Indica o tipo de usuário
+
+            // Redireciona para a página inicial protegida
+            header("Location: ../Main/mainPaciente.html");
+            exit;
+        } else {
+            // Usuário existe no Auth, mas não na tabela 'pacientes' (é profissional ou outro)
+            header("Location: loginPaciente.php?erro=tipo_incorreto");
+            exit;
+        }
     } else {
         // Login falhou: Redireciona com parâmetro de erro
         header("Location: loginPaciente.php?erro=" . $resultado);
         exit;
     }
 }
-// --- FIM LÓGICA DE LOGIN ---
 
 // --- LÓGICA PARA EXIBIR MENSAGENS (após redirecionamentos) ---
 if (isset($_GET['sucesso']) && $_GET['sucesso'] == 1) {
@@ -49,6 +63,9 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] == 1) {
         case 'senha_invalida':
             $mensagem_erro = "Senha incorreta.";
             break;
+        case 'tipo_incorreto':
+            $mensagem_erro = "Este login não é para a área de pacientes. Tente na área de Profissionais.";
+            break;
         case 'expirou':
              $mensagem_erro = "Sessão expirada. Tente novamente.";
              break;
@@ -56,7 +73,6 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] == 1) {
             $mensagem_erro = "Erro ao efetuar login. Tente novamente.";
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -79,16 +95,16 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] == 1) {
     <div class="login-container">
       <h2 class="login-title">Acesse com seu login ou cadastre-se!</h2> <br>
 
-      <form action="../Main/mainPaciente.html" class="login-form">
+      <form action="loginPaciente.php" method="POST" class="login-form">
         <!-- CPF -->
         <div class="login-input-group" id="group-email">
-          <input id="email" class="login-input" type="text" autocomplete="off" required/>
+          <input id="email" name="email" class="login-input" type="text" autocomplete="off" required/>
           <label for="email" class="login-label">Digite seu E-mail</label>
         </div>
 
         <!-- Senha -->
         <div class="login-input-group" id="group-senha">
-            <input id="senha" class="login-input" type="password" autocomplete="current-password" required/>
+            <input id="senha" name="senha"class="login-input" type="password" autocomplete="current-password" required/>
             <label for="senha" class="login-label">Digite sua senha</label>
             <button type="button" class="login-eye" aria-label="Mostrar senha" title="Mostrar senha">
             <!-- SVG olho (duas versões controladas por JS) -->

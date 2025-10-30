@@ -1,3 +1,81 @@
+<?php
+session_start();
+require_once __DIR__ . '/../firebase.php';
+
+$mensagem_erro = '';
+$mensagem_sucesso = '';
+
+function usuario_eh_profissional($uid, $database) {
+    $referencia = $database->getReference('profissionais/' . $uid);
+    return $referencia->getSnapshot()->exists();
+}
+
+// --- LÓGICA DE LOGIN ---
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'] ?? '';
+    $senha = $_POST['senha'] ?? '';
+
+    if (empty($email) || empty($senha)) {
+        header("Location: loginProfissional.php?erro=campos_vazios");
+        exit;
+    }
+
+    // Tenta autenticar no Firebase Auth
+    $resultado = autenticar_usuario($email, $senha, $auth);
+
+    if (is_array($resultado)) {
+        $uid = $resultado['uid'];
+
+        // VERIFICAÇÃO DE TIPO DE USUÁRIO
+        if (usuario_eh_profissional($uid, $database)) {
+            // Login bem-sucedido: Armazena dados essenciais na sessão
+            $_SESSION['user_uid'] = $uid;
+            $_SESSION['user_email'] = $email;
+            $_SESSION['user_type'] = 'profissional'; // Indica o tipo de usuário
+
+            // Redireciona para a página inicial protegida
+            header("Location: inicialProfissional.php");
+            exit;
+        } else {
+            // Usuário existe no Auth, mas não na tabela 'profissionais' (é paciente ou outro)
+            header("Location: loginProfissional.php?erro=tipo_incorreto");
+            exit;
+        }
+    } else {
+        // Login falhou: Redireciona com parâmetro de erro
+        header("Location: loginProfissional.php?erro=" . $resultado);
+        exit;
+    }
+}
+// --- FIM LÓGICA DE LOGIN ---
+
+// --- LÓGICA PARA EXIBIR MENSAGENS (após redirecionamentos) ---
+if (isset($_GET['sucesso']) && $_GET['sucesso'] == 1) {
+    $mensagem_sucesso = "Cadastro realizado com sucesso! Faça seu login.";
+} elseif (isset($_GET['erro'])) {
+    $erro = $_GET['erro'];
+    switch ($erro) {
+        case 'campos_vazios':
+            $mensagem_erro = "Preencha todos os campos.";
+            break;
+        case 'usuario_nao_encontrado':
+            $mensagem_erro = "E-mail não cadastrado.";
+            break;
+        case 'senha_invalida':
+            $mensagem_erro = "Senha incorreta.";
+            break;
+        case 'tipo_incorreto':
+            $mensagem_erro = "Este login não é para a área de profissionais. Tente na área de Pacientes.";
+            break;
+        case 'expirou':
+             $mensagem_erro = "Sessão expirada. Tente novamente.";
+             break;
+        default:
+            $mensagem_erro = "Erro ao efetuar login. Tente novamente.";
+    }
+  }
+  ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -18,16 +96,16 @@
     <div class="login-container">
       <h2 class="login-title">Acesse com seu login ou cadastre-se!</h2> <br>
 
-      <form action="inicialPaciente.html" class="login-form">
+      <form action="loginProfissional.php" method="POST" class="login-form">
         <!-- CPF -->
         <div class="login-input-group" id="group-email">
-          <input id="email" class="login-input" type="text" autocomplete="off" required/>
+          <input id="email" name="email" class="login-input" type="text" autocomplete="off" required/>
           <label for="email" class="login-label">Digite seu E-mail</label>
         </div>
 
         <!-- Senha -->
         <div class="login-input-group" id="group-senha">
-            <input id="senha" class="login-input" type="password" autocomplete="current-password" required/>
+            <input id="senha" name=senha class="login-input" type="password" autocomplete="current-password" required/>
             <label for="senha" class="login-label">Digite sua senha</label>
             <button type="button" class="login-eye" aria-label="Mostrar senha" title="Mostrar senha">
             <!-- SVG olho (duas versões controladas por JS) -->
