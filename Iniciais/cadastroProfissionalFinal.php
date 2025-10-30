@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'firebase.php'; // Importa conexão e funções
+require_once __DIR__ . '/../firebase.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Dados vindos do formulário da etapa 2

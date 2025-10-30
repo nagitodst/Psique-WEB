@@ -2,6 +2,8 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use Kreait\Firebase\Factory;
+use Kreait\Firebase\Exception\Auth\InvalidPassword;
+use Kreait\Firebase\Exception\Auth\UserNotFound;
 
 $credPath = __DIR__ . '/credentials/psique-7fdb1-firebase-adminsdk-fbsvc-2e760b4cf6.json';
 
@@ -104,5 +106,26 @@ function cadastrar_profissional($dados, $auth, $database) {
     } catch (\Throwable $e) {
         error_log('Erro ao cadastrar profissional: ' . $e->getMessage());
         return false;
+    }
+}
+
+// FUNÇÕES DE AUTENTICAÇÃO
+function autenticar_usuario($email, $senha, $auth) {
+    try{
+        $signInResult = $auth->signInWithEmailAndPassword($email, $senha);
+
+        return [
+            'uid' => $signInResult->firebaseUserId(),
+            'idToken' => (string) $signInResult->idToken(),
+        ];
+    }catch (InvalidPassword $e) {
+        error_log('Login Falhou (Senha Invalida): ' . $e->getMessage());
+        return 'senha_invalida';
+    } catch (UserNotFound $e) {
+        error_log('Login Falhou (Usuario Nao Encontrado): ' . $e->getMessage());
+        return 'usuario_nao_encontrado';
+    } catch (\Throwable $e) {
+        error_log('Erro desconhecido no Login: ' . $e->getMessage());
+        return 'erro_desconhecido';
     }
 }

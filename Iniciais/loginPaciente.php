@@ -1,3 +1,64 @@
+<?php
+session_start();
+require_once __DIR__ . '/../firebase.php';
+
+$mensagem_erro = '';
+$mensagem_sucesso = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'] ?? '';
+    $senha = $_POST['senha'] ?? '';
+
+    if (empty($email) || empty($senha)) {
+        header("Location: loginPaciente.php?erro=campos");
+        exit;
+    }
+
+    // autenticar no Firebase
+    $resultado = autenticar_usuario($email, $senha, $auth);
+
+    if (is_array($resultado)) {
+        // Login bem-sucedido: Armazena dados essenciais na sessão
+        $_SESSION['user_uid'] = $resultado['uid'];
+        $_SESSION['user_email'] = $email;
+        $_SESSION['user_type'] = 'paciente'; // Indica o tipo de usuário
+
+        // Redireciona para a página inicial
+        header("Location: inicialPaciente.html");
+        exit;
+    } else {
+        // Login falhou: Redireciona com parâmetro de erro
+        header("Location: loginPaciente.php?erro=" . $resultado);
+        exit;
+    }
+}
+// --- FIM LÓGICA DE LOGIN ---
+
+// --- LÓGICA PARA EXIBIR MENSAGENS (após redirecionamentos) ---
+if (isset($_GET['sucesso']) && $_GET['sucesso'] == 1) {
+    $mensagem_sucesso = "Cadastro realizado com sucesso! Faça seu login.";
+} elseif (isset($_GET['erro'])) {
+    $erro = $_GET['erro'];
+    switch ($erro) {
+        case 'campos_vazios':
+            $mensagem_erro = "Preencha todos os campos.";
+            break;
+        case 'usuario_nao_encontrado':
+            $mensagem_erro = "E-mail não cadastrado.";
+            break;
+        case 'senha_invalida':
+            $mensagem_erro = "Senha incorreta.";
+            break;
+        case 'expirou':
+             $mensagem_erro = "Sessão expirada. Tente novamente.";
+             break;
+        default:
+            $mensagem_erro = "Erro ao efetuar login. Tente novamente.";
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -11,7 +72,7 @@
 <body class="login-body">
 
   <header class="login-header">
-    <img class="logo" src="img/logo.png" alt="Logo Psique">
+    <img class="logo" src="../img/logo.png" alt="Logo Psique">
   </header>
 
   <main class="login-main">

@@ -1,0 +1,128 @@
+/* Reset e base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: #e6fff5;
+  color: #222;
+}
+
+/* Header fixo */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: 2px solid #ddd;
+  z-index: 1000;
+}
+
+/* Logo */
+#logo img {
+  height: 150px;
+  width: auto;
+  display: flex;
+}
+
+/* Ícone de perfil */
+.Perfil-form img {
+  height: 75px;
+  width: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.Perfil-form img:hover {
+  transform: scale(1.05);
+}
+
+/* CONTEÚDO PRINCIPAL */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.boas-vindas h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* CARDS */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+/* TÍTULOS DAS SEÇÕES */
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* PACIENTES */
+.paciente {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: #fafafa;
+}
+
+.paciente p {
+  margin: 2px 0;
+}
+
+.detalhes {
+  font-size: 14px;
+  color: #666;
+}
+
+/* BOTÕES */
+.botoes {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 30px 0;
+}
+
+.btn {
+  background-color: #cdeef0;
+  border: none;
+  border-radius: 12px;
+  padding: 15px 25px;
+  box-shadow: 2px 4px 6px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.btn img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 5px;
+}
+

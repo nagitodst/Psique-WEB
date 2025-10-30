@@ -19,7 +19,7 @@ if (!isset($_SESSION['cadastro_email']) || !isset($_SESSION['cadastro_senha'])) 
   data-senha="<?php echo htmlspecialchars($_SESSION['cadastro_senha']); ?>">
 
   <header class="login-header">
-    <img class="logo" src="img/logo.png" alt="Logo Psique">
+    <img class="logo" src="../img/logo.png" alt="Logo Psique">
   </header>
 
   <main class="login-main">

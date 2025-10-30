@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'firebase.php'; // Importa conexão e funções
+require_once __DIR__ . '/../firebase.php';
 
 if (!isset($_SESSION['cadastro_email']) || !isset($_SESSION['cadastro_senha'])) {
     header("Location: loginPaciente.php?erro=expirou");

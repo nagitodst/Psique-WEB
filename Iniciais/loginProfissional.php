@@ -11,7 +11,7 @@
 <body class="login-body">
 
   <header class="login-header">
-    <img class="logo" src="img/logo.png" alt="Logo Psique">
+    <img class="logo" src="../img/logo.png" alt="Logo Psique">
   </header>
 
   <main class="login-main">
