@@ -14,8 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $telefone = $_POST['telefone'] ?? '';
 
     // Dados armazenados na sessão (email e senha da primeira etapa)
-    $email = $_SESSION['email'] ?? '';
-    $senha = $_SESSION['senha'] ?? '';
+    $email = $_SESSION['cadastro_email'] ?? '';
+    $senha = $_SESSION['cadastro_senha'] ?? '';
 
     // Validação básica
     if (empty($nome) || empty($data_nascimento) || empty($telefone) || empty($email) || empty($senha)) {
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Monta array de dados
+    // Array de dados
     $dados = [
         'nome' => $nome,
         'data_nascimento' => $data_nascimento,

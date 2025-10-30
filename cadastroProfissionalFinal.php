@@ -7,11 +7,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'] ?? '';
     $data_nascimento = $_POST['data_nascimento'] ?? '';
     $telefone = $_POST['telefone'] ?? '';
-    $crp = $_POST['crp'] ?? '';
-
-    // Dados armazenados na sessão (email e senha da primeira etapa)
-    $email = $_SESSION['email'] ?? '';
-    $senha = $_SESSION['senha'] ?? '';
+    
+    // Dados armazenados na sessão (email, senha e crp da primeira etapa)
+    $email = $_SESSION['cadastro_email'] ?? '';
+    $senha = $_SESSION['cadastro_senha'] ?? '';
+    $crp = $_SESSION['cadastro_crp'] ?? ''; // CRP vem da sessão, pois foi salvo na parte 1 e não é enviado na parte 2.
 
     // Validação básica
     if (empty($nome) || empty($data_nascimento) || empty($telefone) || empty($crp) || empty($email) || empty($senha)) {
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Monta array de dados
+    //array de dados
     $dados = [
         'nome' => $nome,
         'data_nascimento' => $data_nascimento,
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'senha' => $senha
     ];
 
-    // Tenta cadastrar no Firebase
+    //cadastrar no Firebase
     if (cadastrar_profissional($dados, $auth, $database)) {
         session_unset();
         header("Location: loginProfissional.php?sucesso=1");
