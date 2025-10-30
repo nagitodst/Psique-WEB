@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda do Profissional - Psique</title>
+  <link rel="stylesheet" href="AgendaStyle.css">
+</head>
+<body>
+
+<header>
+  <div><img src="../img/logo.png" alt="Logo" class="logo" ></div>
+  <div class="user-container">
+    <img src="../img/user.svg" onclick="location.href='../PerfilProfissional/Perfil.html'" alt="User" class="user">
+  </div>
+</header>
+
+<div class="container">
+  <!-- Calendário -->
+  <div class="section">
+    <h3>Agenda do Profissional</h3> <br>
+    <div class="calendar-controls">
+      <button id="prevMonth" class="nav-btn">◀</button>
+
+      <div class="month-year">
+        <select id="monthSelect"></select>
+        <select id="yearSelect"></select>
+      </div>
+
+      <button id="nextMonth" class="nav-btn">▶</button>
+    </div> <br>
+    <div id="calendar"></div> <br>
+  </div>
+
+  <!-- Consultas do dia -->
+  <div class="section">
+    <h3>Consultas do dia selecionado:</h3>
+    <ul id="appointmentList"></ul>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Detalhes da Consulta</h3>
+    <p id="modalInfo"></p>
+  </div>
+</div>
+
+<script src="AgendaScript.js"></script>
+</body>
+</html>

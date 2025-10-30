@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diário</title>
+  <link rel="stylesheet" href="diario.css">
+</head>
+<body>
+
+    <!-- MENU LATERAL -->
+  <aside id="sidebar">
+    <nav>
+      <ul>
+        <li onclick="location.href='../Diario/diario.html'">Diário</li>
+        <li>Compartilhamentos</li>
+        <li>Favoritos</li>
+        <li>Agendar Consulta</li>
+        <li>Configurações</li>
+        <li onclick="location.href='../Lixeira/lixeira.html'">Lixeira</li>
+        <li>Sair</li>
+      </ul>
+    </nav>
+  </aside>
+
+
+    <header>
+        <div id="logo">
+          <img src="../img/logo.png" alt="Logo Psique">
+        </div>
+        <div id="menu2" onclick="toggleSidebar()">
+          <img src="../img/menu.png" alt="menu2">
+        </div>
+      </header>
+
+
+  <main>
+    <div class="note-input">
+      <textarea id="noteText" placeholder="Escreva sua anotação..."></textarea>
+      <button id="addNote">Adicionar</button>
+    </div>
+
+    <div id="notesContainer" class="notes"></div>
+  </main>
+
+  <script src="diario.js"></script>
+</body>
+</html>

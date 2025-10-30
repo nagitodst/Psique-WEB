@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Notas Compartilhadas</title>
+  <link rel="stylesheet" href="../Diario/diario.css">
+</head>
+<body>
+  <header>
+    <h2 style="margin: 10px 20px;">Notas Compartilhadas</h2>
+  </header>
+
+  <main id="sharedNotesContainer" class="notes"></main>
+
+  <script>
+    function formatDate(date) {
+      const d = new Date(date);
+      return d.toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" });
+    }
+
+    const sharedNotes = JSON.parse(localStorage.getItem("notasCompartilhadas")) || [];
+    const container = document.getElementById("sharedNotesContainer");
+
+    if (sharedNotes.length === 0) {
+      container.innerHTML = "<p style='margin:20px;'>Nenhuma nota compartilhada ainda.</p>";
+    } else {
+      sharedNotes.forEach((note) => {
+        const div = document.createElement("div");
+        div.classList.add("note");
+        div.innerHTML = `
+          <div>${note.text}</div>
+          <small>Criada: ${formatDate(note.createdAt)}<br>
+          Compartilhada: ${formatDate(note.sharedAt)}</small>
+        `;
+        container.appendChild(div);
+      });
+    }
+  </script>
+</body>
+</html>

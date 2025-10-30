@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['user_type'] = 'paciente'; // Indica o tipo de usuário
 
         // Redireciona para a página inicial
-        header("Location: inicialPaciente.html");
+        header("Location: ../Main/mainPaciente.html");
         exit;
     } else {
         // Login falhou: Redireciona com parâmetro de erro
@@ -79,7 +79,7 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] == 1) {
     <div class="login-container">
       <h2 class="login-title">Acesse com seu login ou cadastre-se!</h2> <br>
 
-      <form action="inicialPaciente.html" class="login-form">
+      <form action="../Main/mainPaciente.html" class="login-form">
         <!-- CPF -->
         <div class="login-input-group" id="group-email">
           <input id="email" class="login-input" type="text" autocomplete="off" required/>
