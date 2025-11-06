@@ -41,7 +41,7 @@ if (!isset($_SESSION['cadastro_email']) || !isset($_SESSION['cadastro_crp']) || 
         </div>
 
         <div class="login-input-group" id="group-tel">
-          <input id="telefone" name="telefone" class="login-input" type="tel" placeholder="27 988123456" pattern="^\d{2}\s9\d{8}$" autocomplete="off" required/>
+          <input id="telefone" name="telefone" class="login-input" type="tel" placeholder="27 988123456" pattern="(?:\d{2}|\(\d{2}\))" autocomplete="off" required/>
           <label for="telefone" class="login-label">Digite seu número de telefone</label>
         </div>
 

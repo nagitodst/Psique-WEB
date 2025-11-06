@@ -4,9 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Validação da força da senha
   senha.addEventListener("input", () => {
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+    const regex = /^(?=.*[A-Za-z])(?=.*\d){8,}$/;
     if (!regex.test(senha.value)) {
-      senha.setCustomValidity("⚠️ A senha deve ter: 8 caracteres, maiúscula, minúscula, número e símbolo.");
+      senha.setCustomValidity("⚠️ A senha deve ter: 8 caracteres, incluindo letras e números.");
     } else {
       senha.setCustomValidity("");
     }

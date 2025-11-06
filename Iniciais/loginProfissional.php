@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_type'] = 'profissional'; // Indica o tipo de usuário
 
             // Redireciona para a página inicial protegida
-            header("Location: inicialProfissional.php");
+            header("Location: ../Main/mainProfissional.html");
             exit;
         } else {
             // Usuário existe no Auth, mas não na tabela 'profissionais' (é paciente ou outro)

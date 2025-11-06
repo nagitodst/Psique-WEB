@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // 2. Validar força da senha
-    $regexSenha = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/';
+    $regexSenha = '/^(?=.*[A-Za-z])(?=.*\d){8,}$/';
     if (!preg_match($regexSenha, $senha)) {
         die("A senha deve ter pelo menos 8 caracteres, incluindo maiúscula, minúscula, número e símbolo.");
     }
@@ -95,8 +95,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             class="login-input" 
             type="password" 
             required
-            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$"
-            title="A senha precisa ter pelo menos 8 caracteres, incluindo letras maiúsculas, minúsculas, números e símbolos."
+            pattern="/^(?=.*[A-Za-z])(?=.*\d){8,}$/"
+            title="A senha precisa ter pelo menos 8 caracteres, incluindo letras e números."
           />
             <label for="senha" class="login-label">Digite sua senha</label>
             <button type="button" class="login-eye" aria-label="Mostrar senha" title="Mostrar senha">
@@ -117,9 +117,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <h4>A senha deve conter, ao menos:</h4>
           <ul>
             <li>8 Caracteres ou mais</li>
-            <li>1 Letra maiúscula e minúscula</li>
+            <li>1 Letra</li>
             <li>1 Número</li>
-            <li>1 caractere especial (como !, @, #, $, etc.)</li>
           </ul>
       </small>
 
