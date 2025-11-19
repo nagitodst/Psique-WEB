@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Recuperar Senha</title>
+  <link rel="stylesheet" href="CSS/log_cad_rec.css" />
+</head>
+<body class="login-body">
+
+  <div class="login-container">
+    <h2>Recuperar Senha</h2>
+
+    <form id="recuperar-form" class="login-form">
+      <div class="login-input-group">
+          <input id="email" name="email" class="login-input" type="email" required />
+          <label for="email" class="login-label">Digite seu E-mail</label>
+        </div>
+        
+      <button type="submit" class="login-btn login-btn-black">Enviar link de redefinição</button>
+    </form>
+
+    <p id="mensagem"></p>
+  </div>
+
+  <script type="module" src="JS/recuperar_senha.js"></script>
+</body>
+</html>

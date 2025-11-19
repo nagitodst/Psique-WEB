@@ -1,0 +1,162 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Layout */
+body {
+  display: flex;
+  height: 100vh;
+  background: #e6fff5;
+  color: #222;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: 2px solid #ddd;
+  z-index: 1000;
+}
+
+.user-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: visible;
+}
+
+.user {
+  height: 50px;
+  width: 110px;
+  cursor: pointer;
+}
+
+/* Logo e menu */
+#logo {
+  height: 150px;
+  width: auto;
+  display: flex;
+}
+
+#menu {
+  height: 55px;
+  width: auto;
+  display: flex;
+  cursor: pointer;
+}
+
+/* Sidebar */
+#sidebar {
+  position: fixed;
+  top: 60px;
+  right: -220px;
+  width: 220px;
+  height: 100%;
+  background: #b3d9eb;
+  padding: 20px 0;
+  transition: right 0.3s ease;
+}
+
+#sidebar nav ul {
+  list-style: none;
+}
+
+#sidebar nav ul li {
+  padding: 15px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #000;
+}
+
+#sidebar nav ul li:hover {
+  background: #b2c9df;
+}
+
+/* Conteúdo principal */
+main {
+  flex: 1;
+  margin-top: 80px;
+  padding: 20px 40px;
+}
+
+/* Introdução */
+.introducao {
+  background: #ffffffa0;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 40px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Cards */
+.cards {
+  display: flex;
+  flex-direction: column; /* coloca um card embaixo do outro */
+  align-items: flex-start;  
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+
+.card {
+  background: #b3d9eb;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+  margin-left: 40px;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+/* Lembretes */
+.lembretes, .dicas, .frase {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+  margin-bottom: 40px;
+}
+
+.lembretes h3, .dicas h3, .frase h3 {
+  margin-bottom: 15px;
+  color: #006666;
+}
+
+.lembretes p {
+  margin-bottom: 20px;
+}
+
+/* Dicas */
+.dicas ul {
+  list-style: none;
+  padding-left: 10px;
+}
+
+.dicas li {
+  margin-bottom: 10px;
+}
+
+/* Frase */
+blockquote {
+  font-style: italic;
+  color: #444;
+  border-left: 4px solid #80c9af;
+  padding-left: 10px;
+}

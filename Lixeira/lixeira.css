@@ -1,0 +1,234 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    padding-top: 60px;
+    flex-wrap: nowrap;
+    background: #e6fff5;
+    box-sizing: border-box;
+  }
+  
+header {
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 2px solid #ddd;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0 20px;
+  box-sizing: border-box;
+}  
+
+#menu2 {
+  cursor: pointer;
+}
+
+#menu2 img {
+  height: 50px;
+  width: 50px;
+  display: block;
+} 
+
+
+#logo {
+    height: 150px;
+    width: auto;
+    display: flex;
+  }
+
+
+.menu-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #555;
+  background: none;
+  border: none;
+}
+
+.menu-icon:hover {
+  color: #000;
+}
+  
+.menu {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 6px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 9999;
+  width: 160px;
+}
+
+.menu button {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+  
+  .menu button:hover {
+    background: #f0f0f0;
+  }
+
+.menu button.delete {
+  color: #d9534f;
+}
+
+.menu button.copy {
+  color: #0275d8;
+}
+
+.menu button.pin {
+  color: #5cb85c;
+}
+
+.menu button.share {
+  color: #f0ad4e;
+}
+
+.menu {
+  position: absolute;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  padding: 5px;
+  z-index: 100;
+}
+
+.menu button {
+  display: block;
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 6px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.menu button:hover {
+  background: #f0f0f0;
+}
+
+#sidebar {
+  position: fixed;
+  top: 60px;
+  right: -220px;
+  width: 220px;
+  height: 100%;
+  background: #b3d9eb;
+  padding: 20px 0;
+  transition: right 0.3s ease;
+}
+
+#sidebar nav ul {
+  list-style: none;
+}
+
+#sidebar nav ul li {
+  padding: 15px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #000;
+}
+
+#sidebar nav ul li:hover {
+  background: #b2c9df;
+}  
+  .btn {
+    background: white;
+    color: #2e6632;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .btn:hover {
+    background: #d8ffd8;
+  }
+  
+  .notes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+  }
+  
+  .note {
+    background: #fff;
+    border: 2px solid #75b975;
+    border-radius: 8px;
+    padding: 15px;
+    width: 220px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .note:hover {
+    transform: scale(1.03);
+  }
+  
+  .menu {
+    display: none;
+    position: absolute;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    padding: 8px;
+  }
+  
+  .menu button {
+    display: block;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 6px 8px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .menu button:hover {
+    background: #f0f0f0;
+  }
+
+
+.note {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  width: auto;
+  max-width: 300px;
+  min-width: 180px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.note-text {
+  outline: none;
+  font-size: 15px;
+  min-height: 20px;
+}
+
+  

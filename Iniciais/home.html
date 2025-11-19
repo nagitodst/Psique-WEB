@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bem-vindo - Psique</title>
+  <link rel="stylesheet" href="CSS/style_home.css">
+  <link rel="stylesheet" href="CSS/logo_inicio.css">
+</head>
+<body>
+
+  <div class="splash">
+    <img src="../img/logo.png" alt="Logo">
+  </div>
+
+  <div id="loading" class="loading hidden">
+    <div class="spinner"></div>
+  </div>
+
+  <header>
+      <img class="logo" src="../img/logo.png" alt="Logo Psique">
+  </header>
+
+
+  <div class="topo_home">
+    <img class="illustration" src="../img/illustration.png" alt="Ilustração de pessoa com celular e logo Psique">
+  
+    <div class="containerhome">
+
+    <!-- Título -->
+    <h1>Bem-Vindo(a) ao nosso Site!</h1>
+
+    <!-- Texto de apoio -->
+    <h2 class="subtext">
+      Um espaço dedicado ao cuidado emocional com acolhimento e praticidade.
+    </h2>
+
+    <!-- Botões -->
+    <div class="buttons">
+      <button class="btn paciente" onclick="location.href='loginPaciente.php'"><p>Sou Paciente</p></button>
+      <button class="btn profissional" onclick="location.href='loginProfissional.php'"><p>Sou Profissional </p></button>
+    </div>
+  </div>
+</div>
+
+  
+  <!-- Por que usar o app -->
+<section class="porque-usar">
+  <div class="porque-container">
+    <h2>Por que usar o nosso app?</h2>
+    <p>Um jeito simples, rápido e fácil de acolher emoções.</p>
+    <div class="beneficios">
+      <div class="beneficio_img">
+        <img src="../img/registros.png" alt="Mais registros">
+        <h3>Mais registros</h3>
+        <p>Facilita e aumenta a frequência dos registros dos pacientes.</p>
+      </div>
+      <div class="beneficio_img">
+        <img src="../img/planeje.png" alt="Planeje">
+        <h3>Planeje</h3>
+        <p>Acesse registros antecipadamente e aproveite melhor as sessões.</p>
+      </div>
+      <div class="beneficio_img">
+        <img src="../img/acompanhe.png" alt="Acompanhe">
+        <h3>Acompanhe</h3>
+        <p>Tenha gráficos completos para acompanhar a evolução dos pacientes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTE 3-->
+
+<section class="avaliacoes">
+  <div class="avaliacoes-container">
+    <h2>Confira avaliações de nossos usuários!</h2>
+
+    <div class="avaliacoes-grid">
+      <div class="avaliacao">
+        <p>
+          O app me ajuda a organizar melhor meus pensamentos. 
+          Sempre que estou ansiosa, escrevo nele e depois consigo refletir sobre como me senti. 
+          Isso faz toda a diferença no meu dia.
+        </p>
+        <span>@usuario1</span>
+      </div>
+
+      <div class="avaliacao">
+        <p>
+          Gostei muito dos gráficos de humor! 
+          É legal ver minha evolução e perceber em quais dias estive mais equilibrado. 
+          Isso me ajuda a entender meus gatilhos.
+        </p>
+        <span>@usuario2</span>
+      </div>
+
+      <div class="avaliacao">
+        <p>
+          A ferramenta é prática e fácil de usar. 
+          Eu uso sempre antes de dormir para registrar meu dia. 
+          Sinto que durmo mais tranquilo depois.
+        </p>
+        <span>@usuario3</span>
+      </div>
+
+      <div class="avaliacao">
+        <p>
+          É como ter um diário inteligente no celular. 
+          Além de escrever, ainda consigo ver relatórios sobre minhas emoções. 
+          Super útil para quem quer se conhecer melhor.
+        </p>
+        <span>@usuario4</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  window.addEventListener("load", () => {
+    const splash = document.querySelector(".splash");
+
+    setTimeout(() => {
+      splash.classList.add("fade-out"); // aplica o efeito de fade
+      setTimeout(() => {
+        splash.style.display = "none"; // remove de vez depois da animação
+      }, 800); // mesmo tempo da transition no CSS
+    }, 2500); // espera a animação inicial
+  });
+</script>
+
+
+</body>
+</html>

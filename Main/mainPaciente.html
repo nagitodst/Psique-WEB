@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psique</title>
+  <link rel="stylesheet" href="stylePaciente.css">
+</head>
+<body>
+  <!-- MENU LATERAL -->
+  <aside id="sidebar">
+    <nav>
+      <ul>
+        <li onclick="location.href='../Diario/diario.html'">Diário</li>
+        <li>Compartilhamentos</li>
+        <li>Favoritos</li>
+        <li>Agendar Consulta</li>
+        <li>Configurações</li>
+        <li onclick="location.href='../Lixeira/lixeira.html'">Lixeira</li>
+        <li>Sair</li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- TOPO -->
+  <header>
+    <div id="user" class="user-container">
+      <img src="../img/user.svg" alt="User" class="user">
+    </div>
+    <div id="menu" onclick="toggleSidebar()">
+      <img src="../img/menu.png" alt="menu">
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main>
+    <h2>Olá, Leticia!</h2>
+
+    <section class="introducao">
+      <p>Bem-vinda ao <strong>Psique</strong> — um espaço criado para cuidar de você.
+      Aqui você pode registrar seus sentimentos, acompanhar seu progresso e se preparar para cada nova consulta.</p>
+    </section>
+
+    <div class="cards">
+      <div class="card" onclick="location.href='../Diario/diario.html'">
+        <h3>Diário</h3>
+        <p>Registre como está se sentindo e acompanhe sua evolução emocional ao longo do tempo.</p>
+      </div>
+      <div class="card" onclick="location.href='../Agendamento/agendamento.html'">
+        <h3>Agendar Consulta</h3>
+        <p>Marque suas sessões de acompanhamento com facilidade e receba lembretes automáticos.</p>
+      </div>
+    </div>
+
+    <!-- SEÇÃO DE LEMBRETES -->
+    <section class="lembretes">
+      <h3>Lembretes</h3>
+      <p><strong>Sua próxima consulta está marcada</strong><br>
+         para 10/06 às 14:00 — não se atrase!</p>
+      <p><strong>Você ainda não escreveu no diário hoje.</strong><br>
+         Que tal registrar como está se sentindo?</p>
+      <p><strong>Parabéns</strong> por completar sua tarefa de hoje!</p>
+    </section>
+
+  
+    <!-- SEÇÃO DICAS -->
+    <section class="dicas">
+      <h3>Dicas de Bem-Estar</h3>
+      <ul>
+        <li>Reserve um momento do seu dia para respirar fundo e relaxar.</li>
+        <li>Escreva algo positivo sobre o seu dia, mesmo que pequeno.</li>
+        <li>Ouça uma música que te acalme e te faça bem.</li>
+        <li>Faça uma caminhada curta para clarear a mente.</li>
+      </ul>
+    </section>
+
+    <!-- SEÇÃO FRASE -->
+    <section class="frase">
+      <h3>Frase do Dia</h3>
+      <blockquote>"Cuidar da mente é um ato de amor próprio."</blockquote>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

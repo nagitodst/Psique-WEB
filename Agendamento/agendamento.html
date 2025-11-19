@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento - Psique</title>
+  <link rel="stylesheet" href="agendamento.css">
+</head>
+<body>
+
+<header>
+  <div><img src="../img/logo.png" alt="Logo" class="logo" onclick="location.href='../InicialPaciente/index.html'"></div>
+  <div class="user-container">
+    <img src="../img/user.svg" alt="User" class="user">
+  </div>
+</header>
+
+<div class="container">
+  <!-- Parte do agendamento -->
+  <div class="section">
+    <h3>Tipo/Modalidade da consulta:</h3>
+    <button id="btnPresencial">Presencial</button>
+    <button id="btnOnline">Online</button>
+<br> <br>
+    <h3>Escolha uma data:</h3>
+    <div class="calendar-controls">
+      <button id="prevMonth" class="nav-btn">◀</button>
+
+      <div class="month-year">
+        <select id="monthSelect"></select>
+        <select id="yearSelect"></select>
+      </div>
+
+      <button id="nextMonth" class="nav-btn">▶</button>
+    </div>
+
+    <div id="calendar"></div>
+  </div>
+
+  <!-- Horários -->
+  <div class="section">
+    <h3>Escolha um horário:</h3>
+    <div id="horarios">
+      <button>06:30</button>
+      <button>07:30</button>
+      <button>08:30</button>
+      <button>9:30</button>
+      <button>10:30</button>
+      <button>11:30</button>
+      <button>14:30</button>
+      <button>15:30</button>
+      <button>16:30</button>
+      <button>17:30</button>
+      <button>18:30</button>
+
+    </div>
+    <br> <br>
+    <button class="save-btn">Salvar</button>
+  </div>
+</div>
+
+<!-- Parte separada: Consultas marcadas -->
+<div class="section" id="consultasMarcadas">
+  <h4>Suas consultas:</h4>
+  <ul id="appointmentList"></ul>
+</div>
+
+<!-- Modal -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Detalhes da Consulta</h3>
+    <p id="modalInfo"></p>
+    <button id="cancelarConsultaBtn" class="cancel-btn">Cancelar Consulta</button>
+
+  </div>
+</div>
+
+<script type="module" src="agendamento.js"></script>
+</body>
+</html>
