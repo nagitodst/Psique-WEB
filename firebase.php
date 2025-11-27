@@ -5,7 +5,7 @@ use Kreait\Firebase\Factory;
 use Kreait\Firebase\Exception\Auth\InvalidPassword;
 use Kreait\Firebase\Exception\Auth\UserNotFound;
 
-$credPath = __DIR__ . '/credentials/psique-7fdb1-firebase-adminsdk-fbsvc-2e760b4cf6.json';
+$credPath = __DIR__ . '/credentials/psique-7fdb1-firebase-adminsdk-fbsvc-d783971036.json';
 
 try {
     $factory = (new Factory)
