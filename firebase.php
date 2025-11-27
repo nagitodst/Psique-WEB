@@ -10,7 +10,7 @@ $credPath = __DIR__ . '/credentials/psique-7fdb1-firebase-adminsdk-fbsvc-2e760b4
 try {
     $factory = (new Factory)
         ->withServiceAccount($credPath)
-        ->withDatabaseUri('https://psique-7fdb1-default-rtdb.firebaseio.com/');
+        ->withDatabaseUri('https://psique-7fdb1-default-rtdb.firebaseio.com');
 
     $database = $factory->createDatabase();
     $auth = $factory->createAuth();
