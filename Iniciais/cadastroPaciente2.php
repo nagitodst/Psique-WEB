@@ -47,8 +47,8 @@ if (!isset($_SESSION['cadastro_email']) || !isset($_SESSION['cadastro_senha'])) 
         <div class="checkbox">
           <input type="checkbox" id="termos" required>
           <label for="termos">
-            Li e concordo com os <a href="#">Termos & Condições</a> e com a
-            <a href="#">Política de Privacidade</a>
+            Li e concordo com os <a href="termos_condicoes.pdf" target="_blank">Termos & Condições</a> e com a
+            <a href="politicas_privacidade.pdf" target="_blank">Política de Privacidade</a>
           </label>
         </div> <br>
 

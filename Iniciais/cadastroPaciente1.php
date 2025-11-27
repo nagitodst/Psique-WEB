@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             class="login-input" 
             type="password" 
             required
-            pattern="/^(?=.*[A-Za-z])(?=.*\d).{8,}$/"
+            pattern="^(?=.*[A-Za-z])(?=.*\d).{8,}"
             title="A senha precisa ter pelo menos 8 caracteres, incluindo letras e números."
           />
           <label for="senha" class="login-label">Digite sua senha</label>

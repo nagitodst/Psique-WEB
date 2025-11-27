@@ -81,9 +81,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       <!-- crp -->
           <div class="login-input-group" id="group-crp">
-            <input id="crp" name="crp" class="login-input" type="text"
-                   placeholder="Ex: 12/34567" autocomplete="off" required 
-                   pattern="\d{2}/\d{5}" title="Digite no formato 12/34567"/>
+            <input
+             id="crp"
+             name="crp"
+             class="login-input" 
+             type="text"
+             placeholder="Ex: 12/34567"
+             autocomplete="off"
+             required pattern="\d{2}/\d{5}" 
+             title="Digite no formato 12/34567"/>
             <label for="crp" class="login-label">Digite seu CRP</label>
           </div>
 
@@ -95,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             class="login-input" 
             type="password" 
             required
-            pattern="/^(?=.*[A-Za-z])(?=.*\d){8,}$/"
+            pattern="^(?=.*[A-Za-z])(?=.*\d).{8,}"
             title="A senha precisa ter pelo menos 8 caracteres, incluindo letras e números."
           />
             <label for="senha" class="login-label">Digite sua senha</label>
